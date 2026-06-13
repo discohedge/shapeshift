@@ -49,7 +49,7 @@ export function ArchiveClient({
       <SiteHeader />
       <JumpArrows />
 
-      <section className="mx-auto mb-24 flex max-w-6xl flex-col gap-6">
+      <section className="mx-auto mb-24 flex max-w-7xl flex-col gap-6">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="flex flex-wrap gap-x-6 gap-y-3">
           {curvatureFilters.map((filter) => (

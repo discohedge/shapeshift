@@ -4,7 +4,7 @@ export function JumpArrows({
   bottomHref?: string;
 }) {
   return (
-    <nav className="fixed right-1 top-1/2 z-[9100] hidden w-5 -translate-y-1/2 flex-col items-center gap-8 sm:right-2 md:flex">
+    <nav className="fixed bottom-5 right-4 z-[9100] flex w-5 flex-col items-center gap-5 sm:right-6 md:bottom-auto md:right-1 md:top-1/2 md:-translate-y-1/2 md:gap-8 lg:right-2">
       <a
         href="#top"
         aria-label="Jump to top"

@@ -385,7 +385,7 @@ export const projects: Record<string, Project> = {
         hover: "/images/cinthia/A45_cinthia.jpg",
       },
       {
-        default: "/images/placeholders/cinthia-fabrication.svg",
+        default: "/images/cinthia/syn_cinthia.gif",
         placement: "fabrication",
       },
       {

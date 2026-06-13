@@ -16,7 +16,7 @@ export default function Cursor() {
 
   return (
     <div
-      className="pointer-events-none fixed z-[2147483647] h-5 w-5 -translate-x-1/2 -translate-y-1/2"
+      className="custom-cursor pointer-events-none fixed z-[2147483647] h-5 w-5 -translate-x-1/2 -translate-y-1/2"
       style={{ left: position.x, top: position.y }}
     >
       <div className="absolute left-1/2 top-0 h-5 w-px bg-orange-600" />

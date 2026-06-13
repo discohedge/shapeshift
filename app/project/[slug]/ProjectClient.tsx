@@ -28,6 +28,10 @@ type Project = {
 type SectionKey = "design" | "fabrication" | "evaluation";
 type ZoomHandler = (src: string, alt: string) => void;
 
+function canUseImageZoom() {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
 function isGif(src: string) {
   return src.toLowerCase().endsWith(".gif");
 }
@@ -69,8 +73,11 @@ function ZoomableImage({
   return (
     <button
       type="button"
-      onPointerDown={() => onZoom(src, alt)}
-      onClick={() => onZoom(src, alt)}
+      onClick={() => {
+        if (canUseImageZoom()) {
+          onZoom(src, alt);
+        }
+      }}
       className="block w-full cursor-none"
       aria-label={`Zoom ${alt}`}
     >
@@ -148,8 +155,11 @@ function BeforeAfterSwipe({
     <div className="space-y-4">
       <button
         type="button"
-        onPointerDown={() => onZoom(image.hover ?? image.default, "Actuated state")}
-        onClick={() => onZoom(image.hover ?? image.default, "Actuated state")}
+        onClick={() => {
+          if (canUseImageZoom()) {
+            onZoom(image.hover ?? image.default, "Actuated state");
+          }
+        }}
         className="relative block w-full cursor-none overflow-hidden"
         aria-label="Zoom main shaping image"
       >
@@ -455,7 +465,6 @@ export default function ProjectClient({ project }: { project: Project }) {
       {zoomedImage && (
         <button
           type="button"
-          onPointerDown={() => setZoomedImage(null)}
           onClick={() => setZoomedImage(null)}
           className="fixed inset-0 z-[9998] flex cursor-none items-center justify-center bg-white/95 p-6"
           aria-label="Close zoomed image"

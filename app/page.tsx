@@ -287,7 +287,7 @@ function ArchiveSection() {
       <div className="absolute inset-0 bg-white/60" />
       <Link
         href="/demonstrators"
-        className="relative inline-flex items-center justify-center border border-orange-600 bg-transparent px-10 py-5 font-sans text-base font-medium uppercase tracking-[0.16em] text-orange-600 backdrop-blur-sm transition hover:bg-orange-600 hover:text-white"
+        className="relative inline-flex items-center justify-center border border-orange-600 bg-transparent px-10 py-5 font-sans text-base font-medium uppercase tracking-[0.16em] text-orange-600 backdrop-blur-sm transition hover:border-orange-400 hover:bg-orange-200/45 hover:text-orange-700"
       >
         Enter The Gallery
       </Link>
