@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const terms = [
@@ -28,48 +27,15 @@ const terms = [
 ];
 
 function HeroSection() {
-  const [waterProgress, setWaterProgress] = useState(0);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const updateWater = () => {
-      const holdDistance = 180;
-      const wipeDistance = 900;
-      const progress = Math.min(
-        Math.max((window.scrollY - holdDistance) / wipeDistance, 0),
-        1,
-      );
-
-      setWaterProgress(progress);
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(updateWater);
-    };
-
-    updateWater();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
   return (
     <section className="relative h-[300vh]">
       <div className="sticky top-0 flex h-screen flex-col justify-between overflow-hidden bg-white px-5 py-6 sm:px-8 lg:px-12">
-        <div
-          className="absolute -inset-x-1 -top-2 h-[calc(100%+1rem)] bg-sky-100"
-          style={{ transform: `translateY(${waterProgress * 100}%)` }}
-        />
+        <div className="scroll-hero-water-down absolute -inset-x-1 -top-2 h-[calc(100%+1rem)] bg-sky-100" />
 
-        <header className="relative z-10 flex flex-col gap-3 py-4 text-xs uppercase tracking-[0.18em] text-neutral-400 md:flex-row md:justify-between">
+        <header className="relative z-10 grid grid-cols-3 gap-2 py-4 text-[9px] uppercase tracking-[0.14em] text-neutral-400 sm:text-xs sm:tracking-[0.18em]">
           <p>Shape_Shift</p>
-          <p>Digital Thesis Exhibit</p>
-          <p>ITECH 2025</p>
+          <p className="text-center">Digital Thesis Exhibit</p>
+          <p className="text-right">ITECH 2025</p>
         </header>
 
         <div className="relative z-10 flex flex-1 items-center justify-center py-16 text-center">
@@ -93,10 +59,10 @@ function HeroSection() {
 
 function NatureSection() {
   return (
-    <section id="learn" className="scroll-nature-stage relative h-[360vh] px-5 sm:px-8 lg:px-12">
+    <section id="learn" className="scroll-nature-stage relative h-[430vh] px-5 sm:px-8 lg:px-12">
       <div className="sticky top-0 flex h-screen items-center justify-center bg-white">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center">
-          <p className="scroll-nature-text scroll-nature-text-0 max-w-4xl text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
+        <div className="mx-auto flex w-full max-w-none flex-col items-center gap-8 text-center">
+          <p className="scroll-nature-text scroll-nature-text-0 w-full max-w-7xl text-[clamp(1rem,1.75vw,1.85rem)] font-light leading-[1.65] tracking-normal text-neutral-950">
             Nature adapts continuously to its environment. Pinecones open and
             close in response to moisture due to anisotropic fiber structures.
           </p>
@@ -106,13 +72,6 @@ function NatureSection() {
             alt="Pinecone opening and closing in response to moisture"
             className="scroll-nature-image h-[34vh] w-full object-contain object-center md:h-[48vh]"
           />
-
-          <p className="scroll-nature-text scroll-nature-text-2 max-w-4xl text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
-            4D printing translates these biological principles into
-            self-shaping surfaces with embedded material intelligence. From
-            hygroscopic cellulose-based filament, objects are printed flat and
-            transform autonomously over time.
-          </p>
 
           <p className="scroll-nature-image max-w-3xl text-xs font-light leading-relaxed text-neutral-500">
             Video courtesy the Morphing Matter Lab at Carnegie Mellon
@@ -127,6 +86,12 @@ function NatureSection() {
             </Link>
             .
           </p>
+
+          <p className="scroll-nature-text scroll-nature-text-2 w-full max-w-7xl text-[clamp(1rem,1.75vw,1.85rem)] font-light leading-[1.65] tracking-normal text-neutral-950">
+            4D printing translates these biological principles into
+            self-shaping surfaces. From hygroscopic cellulose-based filament, 
+            objects are printed flat and transform autonomously over time.
+          </p>
         </div>
       </div>
     </section>
@@ -139,7 +104,7 @@ function LimitationSection() {
       <div className="sticky top-0 flex h-screen items-start justify-center pt-20 md:pt-24">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-12">
           <p className="scroll-limitation-text mx-auto max-w-5xl text-center text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
-            This has been used for weather-responsive shading systems that require no additional energy or mechanisms to operate.
+            4D printing has been used for weather-responsive shading systems that require no additional energy or mechanisms to operate.
           </p>
 
           <div className="scroll-solargate-images grid gap-5 md:grid-cols-2">
@@ -178,13 +143,13 @@ function LimitationSection() {
 
 function BreakdownIntro() {
   return (
-    <section className="scroll-intro-stage relative h-[280vh] px-5 text-center sm:px-8 lg:px-12">
+    <section className="scroll-intro-stage relative h-[340vh] px-5 text-center sm:px-8 lg:px-12">
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center">
         <p className="scroll-intro-question mx-auto max-w-4xl text-[clamp(1.35rem,2.8vw,2.9rem)] font-light italic leading-[1.45] tracking-normal text-neutral-400">
           But could shape change extend beyond the surface?
         </p>
         <p className="scroll-intro-answer absolute mx-auto max-w-4xl text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
-          <span className="text-orange-600">MS4DP</span> explores one possible answer.
+          <span className="text-orange-600">MS4DP</span> explores one possibility.
         </p>
       </div>
     </section>
@@ -248,7 +213,7 @@ function BreakdownSection() {
 
 function ContributionSection() {
   return (
-    <section className="scroll-contribution-stage relative h-[380vh] px-5 sm:px-8 lg:px-12">
+    <section className="scroll-contribution-stage relative h-[620vh] px-5 sm:px-8 lg:px-12">
       <div className="sticky top-0 flex h-screen items-start justify-center pt-20 md:pt-24">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-24 text-center md:gap-32">
         <p className="scroll-contribution-text mx-auto max-w-4xl font-sans text-[clamp(1.2rem,2.4vw,2.5rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
@@ -270,27 +235,50 @@ function ArchiveSection() {
   return (
     <section
       id="entry"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-24 text-center sm:px-8 lg:px-12"
+      className="relative h-[190vh] text-center"
     >
-      <img
-        src="/gifs/breathing.gif"
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-white/60" />
-      <div className="relative flex flex-col items-center gap-4 sm:flex-row">
+      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-5 py-24 sm:px-8 lg:px-12">
+        <img
+          src="/gifs/breathing.gif"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-white/60" />
+        <div className="relative -translate-y-[22vh] flex flex-col items-center gap-8">
+          <Link
+            href="/gallery"
+            className="inline-flex w-72 items-center justify-center border border-orange-600 bg-transparent px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-orange-600 backdrop-blur-sm transition hover:border-orange-400 hover:bg-orange-200/45 hover:text-orange-700"
+          >
+            Enter The Gallery
+          </Link>
+          <a
+            href="#learn"
+            className="mt-4 inline-flex w-72 items-center justify-center border border-neutral-300 bg-white/20 px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-neutral-500 backdrop-blur-sm transition hover:border-orange-400 hover:bg-white/50 hover:text-orange-600"
+          >
+            What Is MS4DP?
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalHeroSection() {
+  return (
+    <section
+      id="page-end"
+      className="flex min-h-screen items-center justify-center bg-white px-5 text-center sm:px-8 lg:px-12"
+    >
+      <div className="flex flex-col items-center">
+        <h2 className="font-pixel-grid text-[clamp(5.75rem,24vw,20rem)] font-normal uppercase leading-[0.78] tracking-normal">
+          <span className="text-sky-200 mix-blend-multiply">MS4DP</span>
+        </h2>
         <Link
           href="/gallery"
-          className="inline-flex items-center justify-center border border-orange-600 bg-transparent px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-orange-600 backdrop-blur-sm transition hover:border-orange-400 hover:bg-orange-200/45 hover:text-orange-700"
+          className="mt-16 inline-flex items-center justify-center border border-orange-600 bg-transparent px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-orange-600 transition hover:border-orange-400 hover:bg-orange-200/45 hover:text-orange-700"
         >
           Enter The Gallery
         </Link>
-        <a
-          href="#learn"
-          className="inline-flex items-center justify-center border border-neutral-300 bg-white/20 px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-neutral-500 backdrop-blur-sm transition hover:border-orange-400 hover:bg-white/50 hover:text-orange-600"
-        >
-          What Is MS4DP?
-        </a>
       </div>
     </section>
   );
@@ -325,7 +313,8 @@ export default function Home() {
       <BreakdownIntro />
       <BreakdownSection />
       <ContributionSection />
-      <div id="page-end" className="h-[55vh] bg-white" />
+      <div className="h-[70vh] bg-white" />
+      <FinalHeroSection />
 
     </main>
   );

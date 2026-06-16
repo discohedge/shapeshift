@@ -348,13 +348,6 @@ export default function ProjectClient({ project }: { project: Project }) {
             </div>
           ))}
 
-          <Link
-            href="/gallery"
-            className="mt-20 block cursor-none text-xs uppercase tracking-[0.18em] text-orange-600 transition hover:text-neutral-900"
-          >
-            ← Back to Gallery
-          </Link>
-
         </aside>
 
         <section className="space-y-24 lg:col-span-3">
@@ -479,6 +472,13 @@ export default function ProjectClient({ project }: { project: Project }) {
           </span>
         </button>
       )}
+
+      <Link
+        href="/gallery"
+        className="mx-auto mt-24 block max-w-7xl cursor-none pr-8 text-right text-xs uppercase tracking-[0.18em] text-orange-600 transition hover:text-neutral-900"
+      >
+        ← Back to Gallery
+      </Link>
 
       <div id="page-end" className="h-24" />
     </main>

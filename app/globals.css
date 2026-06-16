@@ -75,31 +75,33 @@ html {
   appearance: none;
   background: transparent;
   accent-color: rgb(125 211 252);
+  height: 28px;
+  touch-action: pan-y;
 }
 
 .compare-slider::-webkit-slider-runnable-track {
-  height: 1px;
+  height: 2px;
   background: rgb(125 211 252 / 0.5);
 }
 
 .compare-slider::-webkit-slider-thumb {
   appearance: none;
-  width: 14px;
-  height: 14px;
-  margin-top: -6.5px;
+  width: 22px;
+  height: 22px;
+  margin-top: -10px;
   border: 1px solid rgb(125 211 252 / 0.7);
   border-radius: 9999px;
   background: rgb(240 249 255 / 0.98);
 }
 
 .compare-slider::-moz-range-track {
-  height: 1px;
+  height: 2px;
   background: rgb(125 211 252 / 0.5);
 }
 
 .compare-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 22px;
+  height: 22px;
   border: 1px solid rgb(125 211 252 / 0.7);
   border-radius: 9999px;
   background: rgb(240 249 255 / 0.98);
@@ -515,18 +517,18 @@ html {
 
 @keyframes nature-text-0 {
   0%,
-  18% {
+  10% {
     opacity: 0;
     transform: translateY(2rem) scale(0.98);
   }
 
-  24%,
-  30% {
+  18%,
+  54% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 
-  38%,
+  66%,
   100% {
     opacity: 0;
     transform: translateY(-2rem) scale(0.98);
@@ -535,18 +537,18 @@ html {
 
 @keyframes nature-image {
   0%,
-  22% {
+  14% {
     opacity: 0;
     transform: translateY(2rem);
   }
 
-  36%,
-  76% {
+  24%,
+  64% {
     opacity: 1;
     transform: translateY(0);
   }
 
-  92%,
+  82%,
   100% {
     opacity: 0.35;
     transform: translateY(-1rem);
@@ -580,16 +582,10 @@ html {
     transform: translateY(2rem) scale(0.98);
   }
 
-  62%,
-  70% {
+  66%,
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-
-  78%,
-  100% {
-    opacity: 0;
-    transform: translateY(-2rem) scale(0.98);
   }
 }
 
@@ -643,18 +639,18 @@ html {
 
 @keyframes intro-question {
   0%,
-  12% {
+  10% {
     opacity: 0;
     transform: translateY(2rem);
   }
 
-  26%,
-  52% {
+  22%,
+  62% {
     opacity: 1;
     transform: translateY(0);
   }
 
-  68%,
+  78%,
   100% {
     opacity: 0;
     transform: translateY(-2rem);
@@ -663,12 +659,12 @@ html {
 
 @keyframes intro-answer {
   0%,
-  58% {
+  56% {
     opacity: 0;
     transform: translateY(2rem);
   }
 
-  76%,
+  72%,
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -956,12 +952,12 @@ html {
 
 @keyframes contribution-image {
   0%,
-  64% {
+  38% {
     opacity: 0;
     transform: translateY(2.5rem);
   }
 
-  84%,
+  52%,
   100% {
     opacity: 1;
     transform: translateY(0);
