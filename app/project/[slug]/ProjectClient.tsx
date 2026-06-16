@@ -316,7 +316,7 @@ export default function ProjectClient({ project }: { project: Project }) {
 
   return (
     <main id="top" className="min-h-screen bg-white px-5 py-32 font-sans sm:px-8 md:py-40 lg:px-12">
-      <SiteHeader showNav={false} />
+      <SiteHeader />
       <JumpArrows />
 
       <div className="grid max-w-7xl grid-cols-1 gap-16 pr-8 lg:grid-cols-4">
@@ -349,7 +349,7 @@ export default function ProjectClient({ project }: { project: Project }) {
           ))}
 
           <Link
-            href="/demonstrators"
+            href="/gallery"
             className="mt-20 block cursor-none text-xs uppercase tracking-[0.18em] text-orange-600 transition hover:text-neutral-900"
           >
             ← Back to Gallery

@@ -3,13 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const natureStatements = [
-  "Nature adapts continuously to its environment.",
-  "Pinecones open and close in response to moisture due to anisotropic fiber structures.",
-  "4D printing translates these biological principles into self-shaping surfaces with embedded material intelligence.",
-  "From hygroscopic cellulose-based filament, objects are printed flat and transform autonomously over time.",
-];
-
 const terms = [
   {
     label: "MULTI-STEP",
@@ -100,41 +93,41 @@ function HeroSection() {
 
 function NatureSection() {
   return (
-    <section className="scroll-nature-stage relative h-[600vh]">
-      <div className="sticky top-0 flex h-screen flex-col bg-white">
-        <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-white px-5 sm:px-8">
+    <section id="learn" className="scroll-nature-stage relative h-[360vh] px-5 sm:px-8 lg:px-12">
+      <div className="sticky top-0 flex h-screen items-center justify-center bg-white">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center">
+          <p className="scroll-nature-text scroll-nature-text-0 max-w-4xl text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
+            Nature adapts continuously to its environment. Pinecones open and
+            close in response to moisture due to anisotropic fiber structures.
+          </p>
+
           <img
             src="/gifs/Pine.gif"
             alt="Pinecone opening and closing in response to moisture"
-            className="h-full max-h-full w-full max-w-6xl object-contain object-center"
+            className="scroll-nature-image h-[34vh] w-full object-contain object-center md:h-[48vh]"
           />
-          <div className="scroll-nature-overlay absolute inset-0 bg-white" />
 
-          <div className="absolute inset-x-5 top-1/2 mx-auto max-w-4xl -translate-y-1/2 text-center sm:inset-x-8">
-            {natureStatements.map((statement, index) => (
-              <p
-                key={statement}
-                className={`scroll-nature-text scroll-nature-text-${index} absolute inset-x-0 top-1/2 -translate-y-1/2 text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950`}
-              >
-                {statement}
-              </p>
-            ))}
-          </div>
+          <p className="scroll-nature-text scroll-nature-text-2 max-w-4xl text-[clamp(1.35rem,2.8vw,2.9rem)] font-light leading-[1.45] tracking-normal text-neutral-950">
+            4D printing translates these biological principles into
+            self-shaping surfaces with embedded material intelligence. From
+            hygroscopic cellulose-based filament, objects are printed flat and
+            transform autonomously over time.
+          </p>
+
+          <p className="scroll-nature-image max-w-3xl text-xs font-light leading-relaxed text-neutral-500">
+            Video courtesy the Morphing Matter Lab at Carnegie Mellon
+            University, GIF by Brandon Echter. Source:{" "}
+            <Link
+              href="https://www.sciencefriday.com/articles/no-assembly-hardware-required/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-none text-orange-600 transition hover:text-neutral-900"
+            >
+              Science Friday
+            </Link>
+            .
+          </p>
         </div>
-
-        <p className="px-5 py-4 text-center text-xs font-light leading-relaxed text-neutral-500 sm:px-8">
-          Video courtesy the Morphing Matter Lab at Carnegie Mellon University,
-          GIF by Brandon Echter. Source:{" "}
-          <Link
-            href="https://www.sciencefriday.com/articles/no-assembly-hardware-required/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-none text-orange-600 transition hover:text-neutral-900"
-          >
-            Science Friday
-          </Link>
-          .
-        </p>
       </div>
     </section>
   );
@@ -276,7 +269,7 @@ function ContributionSection() {
 function ArchiveSection() {
   return (
     <section
-      id="archive"
+      id="entry"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-24 text-center sm:px-8 lg:px-12"
     >
       <img
@@ -285,12 +278,20 @@ function ArchiveSection() {
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-white/60" />
-      <Link
-        href="/demonstrators"
-        className="relative inline-flex items-center justify-center border border-orange-600 bg-transparent px-10 py-5 font-sans text-base font-medium uppercase tracking-[0.16em] text-orange-600 backdrop-blur-sm transition hover:border-orange-400 hover:bg-orange-200/45 hover:text-orange-700"
-      >
-        Enter The Gallery
-      </Link>
+      <div className="relative flex flex-col items-center gap-4 sm:flex-row">
+        <Link
+          href="/gallery"
+          className="inline-flex items-center justify-center border border-orange-600 bg-transparent px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-orange-600 backdrop-blur-sm transition hover:border-orange-400 hover:bg-orange-200/45 hover:text-orange-700"
+        >
+          Enter The Gallery
+        </Link>
+        <a
+          href="#learn"
+          className="inline-flex items-center justify-center border border-neutral-300 bg-white/20 px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.16em] text-neutral-500 backdrop-blur-sm transition hover:border-orange-400 hover:bg-white/50 hover:text-orange-600"
+        >
+          What Is MS4DP?
+        </a>
+      </div>
     </section>
   );
 }
@@ -307,7 +308,7 @@ export default function Home() {
           ↑
         </a>
         <a
-          href="#archive"
+          href="#entry"
           aria-label="Jump to demonstrators"
           className="jump-bottom font-sans text-sm font-light leading-none text-transparent transition"
         >
@@ -318,13 +319,13 @@ export default function Home() {
       <HeroSection />
 
       <div className="h-[70vh] bg-white" />
+      <ArchiveSection />
       <NatureSection />
       <LimitationSection />
       <BreakdownIntro />
       <BreakdownSection />
       <ContributionSection />
-      <div className="h-[55vh] bg-white" />
-      <ArchiveSection />
+      <div id="page-end" className="h-[55vh] bg-white" />
 
     </main>
   );

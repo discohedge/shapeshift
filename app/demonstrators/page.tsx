@@ -1,1 +1,5 @@
-export { default } from "./exhibit/page";
+import { redirect } from "next/navigation";
+
+export default function DemonstratorsRedirect() {
+  redirect("/gallery");
+}

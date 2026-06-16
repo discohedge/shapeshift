@@ -147,6 +147,7 @@ html {
 .scroll-statement,
 .scroll-hero-water-down,
 .scroll-nature-overlay,
+.scroll-nature-image,
 .scroll-nature-text,
 .scroll-limitation-text,
 .scroll-solargate-images,
@@ -232,6 +233,13 @@ html {
 .scroll-nature-text {
   opacity: 0;
   transform: translateY(2rem) scale(0.98);
+  animation-timeline: --nature-stage;
+}
+
+.scroll-nature-image {
+  opacity: 0;
+  transform: translateY(2rem);
+  animation-name: nature-image;
   animation-timeline: --nature-stage;
 }
 
@@ -522,6 +530,26 @@ html {
   100% {
     opacity: 0;
     transform: translateY(-2rem) scale(0.98);
+  }
+}
+
+@keyframes nature-image {
+  0%,
+  22% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  36%,
+  76% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  92%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(-1rem);
   }
 }
 

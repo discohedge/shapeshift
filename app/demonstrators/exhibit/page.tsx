@@ -95,23 +95,23 @@ export default async function ExhibitArchivePage({
       : objects.filter((object) => object.curvature === activeFilter);
 
   return (
-    <main id="top" className="min-h-screen bg-white px-5 pb-8 pt-32 font-sans sm:px-8">
+    <main id="top" className="min-h-screen bg-white px-5 pb-8 pt-28 font-sans sm:px-8">
       <SiteHeader />
       <JumpArrows />
 
       <section className="mx-auto flex min-h-[calc(100vh-9rem)] max-w-7xl flex-col">
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-            <div className="flex flex-wrap gap-x-6 gap-y-3">
+          <div className="flex flex-col gap-4 border-b border-neutral-100 pb-5 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
               {filters.map((filter) => (
                 <Link
                   key={filter}
                   href={
                     filter === "all"
-                      ? "/demonstrators"
-                      : `/demonstrators?curvature=${filter}`
+                      ? "/gallery"
+                      : `/gallery?curvature=${filter}`
                   }
-                  className={`cursor-none text-xs uppercase tracking-[0.18em] transition ${
+                  className={`cursor-none text-[10px] uppercase tracking-[0.18em] transition ${
                     activeFilter === filter
                       ? "text-orange-600"
                       : "text-neutral-400 hover:text-neutral-900"
@@ -123,8 +123,8 @@ export default async function ExhibitArchivePage({
             </div>
 
             <Link
-              href="/demonstrators/scroll"
-              className="w-fit cursor-none text-xs uppercase tracking-[0.18em] text-neutral-400 transition hover:text-orange-600"
+              href="/gallery/scroll"
+              className="w-fit cursor-none text-[10px] uppercase tracking-[0.18em] text-neutral-400 transition hover:text-orange-600"
             >
               scroll view
             </Link>
