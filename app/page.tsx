@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const terms = [
@@ -212,6 +213,27 @@ function BreakdownSection() {
 }
 
 function ContributionSection() {
+  const [zoomedImage, setZoomedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!zoomedImage) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setZoomedImage(null);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [zoomedImage]);
+
   return (
     <section className="scroll-contribution-stage relative h-[620vh] px-5 sm:px-8 lg:px-12">
       <div className="sticky top-0 flex h-screen items-start justify-center pt-20 md:pt-24">
@@ -222,11 +244,94 @@ function ContributionSection() {
           alongside its environment.
         </p>
 
-        <div className="scroll-contribution-image flex h-[44vh] w-full items-center justify-center bg-neutral-100 font-sans text-xs uppercase tracking-[0.18em] text-neutral-400 md:h-[62vh]">
-          Placeholder image
+        <div className="scroll-contribution-image grid h-[44vh] w-full grid-cols-3 gap-3 md:h-[62vh] md:gap-5">
+          <figure className="flex min-w-0 flex-col gap-3">
+            <button
+              type="button"
+              onClick={() =>
+                setZoomedImage({
+                  src: "/images/home/Flat Panel Architecture.png",
+                  alt: "Future architectural vision featuring a flat adaptive panel",
+                })
+              }
+              className="min-h-0 flex-1 cursor-zoom-in overflow-hidden bg-neutral-100"
+              aria-label="Zoom flat panel architectural vision"
+            >
+              <img
+                src="/images/home/Flat Panel Architecture.png"
+                alt="Future architectural vision featuring a flat adaptive panel"
+                className="h-full w-full object-cover"
+              />
+            </button>
+            <figcaption className="min-h-10 font-sans text-[9px] font-light leading-snug text-neutral-500 sm:text-xs">
+              Responsive Ventilating Wall Assembly
+            </figcaption>
+          </figure>
+          <figure className="flex min-w-0 flex-col gap-3">
+            <button
+              type="button"
+              onClick={() =>
+                setZoomedImage({
+                  src: "/images/home/Curved Arch Panel.png",
+                  alt: "Future architectural vision featuring a curved adaptive arch panel",
+                })
+              }
+              className="min-h-0 flex-1 cursor-zoom-in overflow-hidden bg-neutral-100"
+              aria-label="Zoom curved arch architectural vision"
+            >
+              <img
+                src="/images/home/Curved Arch Panel.png"
+                alt="Future architectural vision featuring a curved adaptive arch panel"
+                className="h-full w-full object-cover"
+              />
+            </button>
+            <figcaption className="min-h-10 font-sans text-[9px] font-light leading-snug text-neutral-500 sm:text-xs">
+              Responsive Ventilating Wall Assembly
+            </figcaption>
+          </figure>
+          <figure className="flex min-w-0 flex-col gap-3">
+            <button
+              type="button"
+              onClick={() =>
+                setZoomedImage({
+                  src: "/images/home/Bridge Architecture.png",
+                  alt: "Future architectural vision featuring an adaptive bridge structure",
+                })
+              }
+              className="min-h-0 flex-1 cursor-zoom-in overflow-hidden bg-neutral-100"
+              aria-label="Zoom bridge architectural vision"
+            >
+              <img
+                src="/images/home/Bridge Architecture.png"
+                alt="Future architectural vision featuring an adaptive bridge structure"
+                className="h-full w-full object-cover"
+              />
+            </button>
+            <figcaption className="min-h-10 font-sans text-[9px] font-light leading-snug text-neutral-500 sm:text-xs">
+              Self-shaping Deployable Structures
+            </figcaption>
+          </figure>
         </div>
         </div>
       </div>
+
+      {zoomedImage && (
+        <button
+          type="button"
+          onClick={() => setZoomedImage(null)}
+          className="fixed inset-0 z-[9998] flex cursor-zoom-out items-center justify-center bg-white/95 p-6"
+          aria-label="Close zoomed image"
+        >
+          <img
+            src={zoomedImage.src}
+            alt={zoomedImage.alt}
+            className="max-h-[90vh] max-w-[92vw] object-contain"
+          />
+          <span className="absolute right-6 top-6 font-sans text-xs uppercase tracking-[0.18em] text-neutral-500">
+            Close
+          </span>
+        </button>
+      )}
     </section>
   );
 }
@@ -296,8 +401,8 @@ export default function Home() {
           ↑
         </a>
         <a
-          href="#entry"
-          aria-label="Jump to demonstrators"
+          href="#page-end"
+          aria-label="Jump to bottom"
           className="jump-bottom font-sans text-sm font-light leading-none text-transparent transition"
         >
           ↓
