@@ -289,6 +289,7 @@ export default function ProjectClient({ project }: { project: Project }) {
       data: project.parameters?.evaluation ?? [],
     },
   ] as const;
+  const visibleSections = sections.filter((section) => section.key !== "design");
 
   const processImages = project.images.filter((img) => img.process);
   const galleryImages = project.images.filter((img) => !img.process);
@@ -325,7 +326,7 @@ export default function ProjectClient({ project }: { project: Project }) {
             {project.title}
           </h1>
 
-          {sections.map((section) => (
+          {visibleSections.map((section) => (
             <div key={section.key} className="border-b border-neutral-100 py-4">
               <button
                 onClick={() => toggle(section.key)}
